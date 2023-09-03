@@ -5,11 +5,11 @@ sudo a2enmod proxy
 sudo a2enmod proxy_http
 sudo systemctl restart apache2
 
-sudo nano /etc/apache2/sites-available/frontend.dollorinfotech.com.conf
+sudo nano /etc/apache2/sites-available/anil-jenkins1.dollorinfotech.com.conf
 
 paste the content
 <VirtualHost *:80>
-    ServerName frontend.dollorinfotech.com
+    ServerName anil-jenkins1.dollorinfotech.com
 
     ProxyPreserveHost On
     ProxyPass / http://38.242.236.173:8080/
@@ -30,6 +30,14 @@ sudo apt update
 sudo apt install certbot python3-certbot-apache
 
 sudo certbot --apache -d anil-jenkins1.dollorinfotech.com -m your_email@example.com
+
+sudo vim /etc/apache2/sites-available/anil-jenkins1.dollorinfotech.com.conf
+
+paste the content
+<VirtualHost *:80>
+    ServerName anil-jenkins1.dollorinfotech.com
+    Redirect permanent / https://anil-jenkins1.dollorinfotech.com
+</VirtualHost>
 
 sudo apache2ctl configtest
 
