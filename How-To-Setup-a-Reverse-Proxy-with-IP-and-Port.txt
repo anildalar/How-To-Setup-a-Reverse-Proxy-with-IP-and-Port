@@ -1,4 +1,4 @@
-------------------- For Apache WebServer ------------
+------------------- For Reverse Proxy Start  ------------
 sudo apt update
 sudo apt install apache2
 sudo a2enmod proxy
@@ -21,3 +21,22 @@ sudo a2ensite frontend.dollorinfotech.com.conf
 sudo apache2ctl configtest
 
 sudo systemctl restart apache2
+
+------------------- For Reverse Proxy End  ------------
+
+------------------- For SSL Certificates, Start  ------------
+
+sudo apt update
+sudo apt install certbot python3-certbot-apache
+
+sudo certbot --apache -d anil-jenkins1.dollorinfotech.com -m your_email@example.com
+
+sudo apache2ctl configtest
+
+sudo a2enmod ssl
+
+sudo systemctl restart apache2
+
+sudo systemctl enable certbot.timer
+
+------------------- For SSL Certificate End  ------------
